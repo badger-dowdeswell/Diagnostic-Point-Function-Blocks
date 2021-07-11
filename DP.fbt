@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Diagnostic Point" Name="DP">
+  <Identification ApplicationDomain="Fault Diagnostics" Description="The DP function block operates as a probe that allows a FDE agent to interact with a function block from the inside of the function block application." Function="Interface to the agents in the Multiagent Fault Diagnostic Engine (FDE)." Standard="61499-2" Type="Composite Function Block"/>
+  <VersionInfo Author="Badger" Date="2020-05-28" Organization="AUT" Version="1.0"/>
+  <CompilerInfo>
+    <Compiler Language="Cpp" Product="Unknown" Vendor="Unknown" Version="1.0"/>
+  </CompilerInfo>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="START" Type="Event">
+        <With Var="ADDRESS"/>
+        <With Var="PORT"/>
+        <With Var="INST_ID"/>
+        <With Var="POLL_TIME"/>
+      </Event>
+      <Event Comment="Normal Execution Request" Name="DATA_IN" Type="Event">
+        <With Var="DATA_IN_BOOL"/>
+        <With Var="DATA_TYPE"/>
+        <With Var="DATA_IN_WSTRING"/>
+        <With Var="DATA_IN_STRING"/>
+        <With Var="DATA_IN_LREAL"/>
+        <With Var="DATA_IN_REAL"/>
+        <With Var="DATA_IN_LINT"/>
+        <With Var="DATA_IN_INT"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Initialization Confirm" Name="DATA_OUT" Type="Event">
+        <With Var="DATA_OUT_BOOL"/>
+        <With Var="DATA_OUT_INT"/>
+        <With Var="DATA_OUT_LINT"/>
+        <With Var="DATA_OUT_REAL"/>
+        <With Var="DATA_OUT_LREAL"/>
+        <With Var="DATA_OUT_STRING"/>
+        <With Var="DATA_OUT_WSTRING"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="DATA_IN_INT" Type="INT"/>
+      <VarDeclaration Comment="" Name="DATA_IN_LINT" Type="LINT"/>
+      <VarDeclaration Comment="" Name="DATA_IN_REAL" Type="REAL"/>
+      <VarDeclaration Comment="" Name="DATA_IN_LREAL" Type="LREAL"/>
+      <VarDeclaration Comment="" Name="DATA_IN_STRING" Type="STRING"/>
+      <VarDeclaration Comment="" Name="DATA_IN_WSTRING" Type="WSTRING"/>
+      <VarDeclaration Comment="Input event qualifier" Name="DATA_IN_BOOL" Type="BOOL"/>
+      <VarDeclaration Comment="" Name="DATA_TYPE" Type="INT"/>
+      <VarDeclaration Comment="" Name="POLL_TIME" Type="TIME"/>
+      <VarDeclaration Comment="" Name="ADDRESS" Type="STRING"/>
+      <VarDeclaration Comment="" Name="PORT" Type="LINT"/>
+      <VarDeclaration Comment="" Name="INST_ID" Type="INT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="DATA_OUT_INT" Type="INT"/>
+      <VarDeclaration Comment="" Name="DATA_OUT_LINT" Type="LINT"/>
+      <VarDeclaration Comment="" Name="DATA_OUT_REAL" Type="REAL"/>
+      <VarDeclaration Comment="" Name="DATA_OUT_LREAL" Type="LREAL"/>
+      <VarDeclaration Comment="" Name="DATA_OUT_STRING" Type="STRING"/>
+      <VarDeclaration Comment="" Name="DATA_OUT_WSTRING" Type="WSTRING"/>
+      <VarDeclaration Comment="Output event qualifier" Name="DATA_OUT_BOOL" Type="BOOL"/>
+    </OutputVars>
+  </InterfaceList>
+  <FBNetwork>
+    <FB Comment="" Name="E_CYCLE" Type="E_CYCLE" x="2311.7647058823527" y="58.8235294117647"/>
+    <FB Comment="" Name="AGENT_GATE" Type="AGENT_GATE" x="2223.529411764706" y="835.2941176470588"/>
+    <EventConnections>
+      <Connection Comment="" Destination="E_CYCLE.START" Source="START" dx1="1370.5882352941176"/>
+      <Connection Comment="" Destination="AGENT_GATE.POLL" Source="E_CYCLE.EO" dx1="70.58823529411764" dx2="70.58823529411764" dy="511.7647058823529"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN" Source="DATA_IN" dx1="1082.3529411764705"/>
+      <Connection Comment="" Destination="DATA_OUT" Source="AGENT_GATE.DATA_OUT" dx1="441.17647058823525"/>
+      <Connection Comment="" Destination="AGENT_GATE.START" Source="START" dx1="1205.8823529411764"/>
+    </EventConnections>
+    <DataConnections>
+      <Connection Comment="" Destination="E_CYCLE.DT" Source="POLL_TIME" dx1="823.5294117647059"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN_INT" Source="DATA_IN_INT" dx1="1005.8823529411764"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN_LINT" Source="DATA_IN_LINT" dx1="935.2941176470588"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN_REAL" Source="DATA_IN_REAL" dx1="864.7058823529411"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN_LREAL" Source="DATA_IN_LREAL" dx1="758.8235294117646"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN_STRING" Source="DATA_IN_STRING" dx1="676.470588235294"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN_WSTRING" Source="DATA_IN_WSTRING" dx1="570.5882352941176"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_IN_BOOL" Source="DATA_IN_BOOL" dx1="476.4705882352941"/>
+      <Connection Comment="" Destination="AGENT_GATE.DATA_TYPE" Source="DATA_TYPE" dx1="364.70588235294116"/>
+      <Connection Comment="" Destination="AGENT_GATE.ADDRESS" Source="ADDRESS" dx1="282.35294117647055"/>
+      <Connection Comment="" Destination="AGENT_GATE.PORT" Source="PORT" dx1="205.88235294117646"/>
+      <Connection Comment="" Destination="AGENT_GATE.INST_ID" Source="INST_ID" dx1="129.41176470588235"/>
+      <Connection Comment="" Destination="DATA_OUT_INT" Source="AGENT_GATE.DATA_OUT_INT" dx1="441.17647058823525"/>
+      <Connection Comment="" Destination="DATA_OUT_LINT" Source="AGENT_GATE.DATA_OUT_LINT" dx1="441.17647058823525"/>
+      <Connection Comment="" Destination="DATA_OUT_REAL" Source="AGENT_GATE.DATA_OUT_REAL" dx1="441.17647058823525"/>
+      <Connection Comment="" Destination="DATA_OUT_LREAL" Source="AGENT_GATE.DATA_OUT_LREAL" dx1="441.17647058823525"/>
+      <Connection Comment="" Destination="DATA_OUT_STRING" Source="AGENT_GATE.DATA_OUT_STRING" dx1="441.17647058823525"/>
+      <Connection Comment="" Destination="DATA_OUT_WSTRING" Source="AGENT_GATE.DATA_OUT_WSTRING" dx1="441.17647058823525"/>
+      <Connection Comment="" Destination="DATA_OUT_BOOL" Source="AGENT_GATE.DATA_OUT_BOOL" dx1="441.17647058823525"/>
+    </DataConnections>
+  </FBNetwork>
+</FBType>
